@@ -23,8 +23,8 @@
     include "includes/add_post.php";
     break;
 
-    case '20';
-    echo "It is 20";
+    case 'edit_post';
+    include "includes/edit_post.php";
     break;
 
     case '30';
