@@ -23,9 +23,7 @@
         $post_content = substr($row['post_content'],0,100);
         $post_status = $row['post_status'];
 
-        if($post_status !== 'published') {
-            echo "<h1 class='text-center'>Currently there are no posts to be displayed!</h1>";
-        } else {
+        if($post_status == 'published'){
 ?>
                 <h1 class="page-header">
                     Page Heading
