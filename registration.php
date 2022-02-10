@@ -8,6 +8,8 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        if(!empty($username) && !empty($email) && !empty($password)){
+
         $username = mysqli_real_escape_string($connection, $username);
         $email = mysqli_real_escape_string($connection, $email);
         $password = mysqli_real_escape_string($connection, $password);
@@ -26,8 +28,14 @@
         $query .= "VALUES('{$username}', '{$email}', '{$password}', 'subscriber' )";
         $register_user_query = mysqli_query($connection, $query);
         if(!$register_user_query){
-            die("QUERY FAILED " . mysqli_error($connection) . ' ' . mysqli_error($connection));
+            die("QUERY FAILED " . mysqli_error($connection));
         }
+        $message = "Your Registration has been submitted";
+        } else {
+            $message = "Fields can't be empty";
+        }
+    } else {
+        $message = "";
     }
 ?> 
     
@@ -41,6 +49,7 @@
                 <div class="form-wrap">
                 <h1>Register</h1>
                     <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                        <h6 class="text-center"><?php echo $message; ?></h6>
                         <div class="form-group">
                             <label for="username" class="sr-only">username</label>
                             <input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username">
