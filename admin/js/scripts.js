@@ -23,7 +23,7 @@ $(document).ready(function () {
   $("body").prepend(div_box);
 
   $("#load-screen")
-    .delay(700)
+    .delay(0)
     .fadeOut(600, function () {
       $(this).remove();
     });
