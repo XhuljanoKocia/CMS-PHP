@@ -25,16 +25,15 @@
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
 
-    $query = "SELECT randSalt FROM users";
-    $select_randsalt_query = mysqli_query($connection, $query);
+    if(!empty($user_password)){
+      $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id";
+      $get_user_query = mysqli_query($connection, $query);
+      $row = mysqli_fetch_array($get_user_query);
 
-    if(!$select_randsalt_query){
-        die("Query Failed" . mysqli_error($connection));
+      confirmQuery($get_user_query);
+
+      $db_user_password = $row['user_password'];
     }
-
-    $row = mysqli_fetch_array($select_randsalt_query);
-    $salt = $row['randSalt'];
-    $hashed_password = crypt($user_password, $salt);
 
     $query = "UPDATE users SET ";
     $query .="user_firstname = '{$user_firstname}', ";
