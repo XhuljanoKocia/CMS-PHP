@@ -33,20 +33,26 @@
       confirmQuery($get_user_query);
 
       $db_user_password = $row['user_password'];
-    }
 
-    $query = "UPDATE users SET ";
-    $query .="user_firstname = '{$user_firstname}', ";
-    $query .="user_lastname = '{$user_lastname}', ";
-    $query .="user_role = '{$user_role}', ";
-    $query .="username = '{$username}', ";
-    $query .="user_email = '{$user_email}', ";
-    $query .="user_password = '{$hashed_password}' ";
-    $query .="WHERE user_id = {$the_user_id} ";
+      if($db_user_password != $user_password){
+        $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+      }
 
-    $edit_user_query = mysqli_query($connection, $query);
+      $query = "UPDATE users SET ";
+      $query .="user_firstname = '{$user_firstname}', ";
+      $query .="user_lastname = '{$user_lastname}', ";
+      $query .="user_role = '{$user_role}', ";
+      $query .="username = '{$username}', ";
+      $query .="user_email = '{$user_email}', ";
+      $query .="user_password = '{$hashed_password}' ";
+      $query .="WHERE user_id = {$the_user_id} ";
 
-    confirmQuery($edit_user_query);
+      $edit_user_query = mysqli_query($connection, $query);
+
+      confirmQuery($edit_user_query);
+
+      echo "User Updated" . " <a href='users.php'>View Users</a>";
+    }  
   }
 ?>
 
