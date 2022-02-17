@@ -27,7 +27,7 @@
 
     if(!empty($user_password)){
       $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id";
-      $get_user_query = mysqli_query($connection, $query);
+      $get_user_query = mysqli_query($connection, $query_password);
       $row = mysqli_fetch_array($get_user_query);
 
       confirmQuery($get_user_query);
@@ -87,7 +87,7 @@
   </div>
   <div class="form-group">
     <label for="post_content">Password</label>
-    <input type="password" value="<?php echo $user_password; ?>" class="form-control" name="user_password">
+    <input autocomplete="off" type="password" class="form-control" name="user_password">
   </div>
   <div class="form-group">
     <input class="btn btn-primary" type="submit" name="edit_user" value="Edit User">
