@@ -85,6 +85,7 @@
   <div class="form-group">
     <label for="users">Users</label>
     <select name="post_user" id="users">
+<?php echo "<option value='{$post_user}'>{$post_user}</option>"; ?>
       <?php
         $query = "SELECT * FROM users";
         $select_users = mysqli_query($connection, $query);
