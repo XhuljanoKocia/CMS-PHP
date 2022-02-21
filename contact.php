@@ -3,11 +3,24 @@
 <?php  include "includes/navigation.php"; ?>
 
 <?php
-    if(isset($_POST['submit'])){
-        $to = "xhuljanokocia@gmail.com";
-        $subject = $_POST['subject'];
-        $body = $_POST['body'];
-    }
+  // // the message
+  // $msg = "First line of text\nSecond line of text";
+
+  // // use wordwrap() if lines are longer than 70 characters
+  // $msg = wordwrap($msg,70);
+
+  // // send email
+  // mail("xhuljanokocia@gmail.com","My subject",$msg);
+
+  if(isset($_POST['submit'])){
+
+    $to = "xhuljanokocia@gmail.com";
+    $subject = wordwrap($_POST['subject'], 70);
+    $body = $_POST['body'];
+    $header = $_POST['email'];
+
+    //mail($to, $subject, $body, $header);
+  }
 ?> 
     
     <!-- Page Content -->
