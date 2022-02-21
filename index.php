@@ -26,9 +26,13 @@
         $page_1 = ($page * $per_page) - $per_page;
     }
 
-    $post_query_count = "SELECT * FROM posts";
+    $post_query_count = "SELECT * FROM posts WHERE post_status = 'published'";
     $find_count = mysqli_query($connection, $post_query_count);
     $count = mysqli_num_rows($find_count);
+
+    if($count < 1){
+        echo "<h1 class='text-center'>No Posts Available</h1>";
+    } else {
 
     $count = ceil($count / $per_page);
 
@@ -44,7 +48,6 @@
         $post_content = substr($row['post_content'],0,100);
         $post_status = $row['post_status'];
 
-        if($post_status == 'published'){
 ?>
                 <h1 class="page-header">
                     Page Heading
