@@ -50,8 +50,7 @@
 
 ?>
                 <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+                    All Posts
                 </h1>
 
                 <!-- First Blog Post -->
