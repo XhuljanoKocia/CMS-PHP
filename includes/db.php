@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
   // This is a more secure way to connect to the database
   $db['db_host'] = "localhost";
