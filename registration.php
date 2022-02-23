@@ -8,6 +8,10 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        if(username_exists($username)){
+            $message = "User Exists";
+        }
+
         if(!empty($username) && !empty($email) && !empty($password)){
 
         $username = mysqli_real_escape_string($connection, $username);
@@ -22,7 +26,7 @@
         if(!$register_user_query){
             die("QUERY FAILED " . mysqli_error($connection));
         }
-        $message = "Your Registration has been submitted";
+        // $message = "Your Registration has been submitted";
         } else {
             $message = "Fields can't be empty";
         }
