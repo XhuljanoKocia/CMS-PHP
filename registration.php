@@ -1,6 +1,7 @@
 <?php  include "includes/header.php"; ?>
 <!-- Navigation -->
 <?php  include "includes/navigation.php"; ?>
+<?php  include "./admin/functions.php"; ?>
 
 <?php
     if(isset($_POST['submit'])){
@@ -36,6 +37,13 @@
 
         if($password == ''){
             $error['password'] = 'Password can not be empty!';
+        }
+
+        foreach ($error as $key => $value) {
+            if(empty($value)){
+                register_user($username, $email, $password);
+                login_user($username, $password);
+            }
         }
     }
 ?> 
