@@ -3,7 +3,41 @@
 <?php  include "includes/navigation.php"; ?>
 
 <?php
-    if(isset($_POST['submit'])){}
+    if(isset($_POST['submit'])){
+        $username = trim($_POST['username']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        $error = [
+            'username'=>'',
+            'email'=>'',
+            'password'=>''
+        ];
+
+        if(strlen($username) < 4){
+            $error['username'] = 'Username needs to be more than 4 characters!';
+        }
+
+        if($username == ''){
+            $error['username'] = 'Username can not be empty!';
+        }
+
+        if(username_exists($username)){
+            $error['username'] = 'Username already exists, pick another one!';
+        }
+
+        if($email == ''){
+            $error['email'] = 'Email can not be empty!';
+        }
+
+        if(email_exists($email)){
+            $error['email'] = 'Email already exists, <a href="index.php">Please Login</a>!';
+        }
+
+        if($password == ''){
+            $error['password'] = 'Password can not be empty!';
+        }
+    }
 ?> 
     
     <!-- Page Content -->
@@ -16,7 +50,6 @@
                 <div class="form-wrap">
                 <h1>Register</h1>
                     <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
-                        <h6 class="text-center"><?php echo $message; ?></h6>
                         <div class="form-group">
                             <label for="username" class="sr-only">username</label>
                             <input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username">
