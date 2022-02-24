@@ -12,10 +12,11 @@
       if($cat_title == "" || empty($cat_title)) {
         echo "This field should not be empty";
       } else {
-        $query = "INSERT INTO categories(cat_title) VALUE('{$cat_title}')";
-        $create_category_query = mysqli_query($connection, $query);
-  
-        if(!$create_category_query) {
+        $stmt = mysqli_prepare($connection, "INSERT INTO categories(cat_title) VALUE(?)");
+        mysqli_stmt_bind_param($stmt, 's', $cat_title);
+        mysqli_stmt_execute($stmt);
+
+        if(!$stmt) {
           die('QUERY FAILED!' . mysqli_error($connection));
         }
       }
