@@ -1,4 +1,5 @@
-<?php include "includes/header.php"; ?> 
+<?php include "includes/header.php"; ?>
+<?php  include "./admin/functions.php"; ?> 
     
     <!-- Navigation -->
 <?php include "includes/navigation.php"; ?> 
@@ -37,21 +38,15 @@
         $stmt = $stmt2;
     }
 
-    if(mysqli_stmt_num_rows($stmt) < 1){
+    if(mysqli_stmt_num_rows($stmt) === 0){
         echo "<h1 class='text-center'>No Posts Available</h1>";
-    } else {
+    }
 
-    while($row = mysqli_fetch_assoc($select_all_posts_query)){
-        $post_id = $row['post_id'];
-        $post_title = $row['post_title'];
-        $post_author = $row['post_author'];
-        $post_date = $row['post_date'];
-        $post_image = $row['post_image'];
-        $post_content = substr($row['post_content'],0,100);
+    while(mysqli_stmt_fetch($stmt)) :
 ?>
                 <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+                    Welcome to Categories
+                    <small><?php echo $_SESSION['username']; ?></small>
                 </h1>
 
                 <!-- First Blog Post -->
@@ -69,7 +64,7 @@
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
-<?php } } } else {
+<?php endwhile; } else {
     header("Location: header.php");
 }?>
                 
