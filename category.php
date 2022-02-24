@@ -64,7 +64,7 @@
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
-<?php endwhile; } else {
+<?php endwhile; mysqli_stmt_close($stmt); } else {
     header("Location: header.php");
 }?>
                 

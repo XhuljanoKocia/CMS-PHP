@@ -26,6 +26,7 @@
     if(!$stmt) {
       die("QUERY FAILED" . mysqli_error($connection));
     }
+    mysqli_stmt_close($stmt);
     redirect("categories.php");
   }
 ?>             
