@@ -1,5 +1,6 @@
 <?php include "includes/db.php" ?>
 <?php include "includes/header.php" ?>
+<?php  include "./admin/functions.php"; ?>
 <?php session_start(); ?>
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -45,15 +46,25 @@
         echo "<li class='$category_class'><a href='/cms/category/{$cat_id}'>{$cat_title}</a></li>";
     }
 ?>
+<?php if(isLoggedIn()): ?>
                     <li>
                         <a href="/cms/admin">Admin</a>
                     </li>
+                    <li>
+                        <a href="/cms/includes/logout">Logout</a>
+                    </li>
+<?php else: ?>
+                    <li>
+                        <a href="/cms/login.php">Login</a>
+                    </li>
+<?php endif; ?>
                     <li class='<?php echo $registration_class; ?>'>
                         <a href="/cms/registration">Register</a>
                     </li>
                     <li class='<?php echo $contact_class; ?>'>
                         <a href="/cms/contact">Contact</a>
                     </li>
+
 <?php
     if(isset($_SESSION['user_role'])){
         if(isset($_GET['p_id'])){
