@@ -23,27 +23,27 @@
                      *
                      *
                      */
-            //         $mail = new PHPMailer();
-            //         $mail->isSMTP();
-            //         $mail->Host = Config::SMTP_HOST;
-            //         $mail->Username = Config::SMTP_USER;
-            //         $mail->Password = Config::SMTP_PASSWORD;
-            //         $mail->Port = Config::SMTP_PORT;
-            //         $mail->SMTPSecure = 'tls';
-            //         $mail->SMTPAuth = true;
-            //         $mail->isHTML(true);
-            //         $mail->CharSet = 'UTF-8';
-            //         $mail->setFrom('edwin@codingfaculty.com', 'Edwin Diaz');
-            //         $mail->addAddress($email);
-            //         $mail->Subject = 'This is a test email';
-            //         $mail->Body = '<p>Please click to reset your password
-            //         <a href="http://localhost:8888/cms/reset.php?email='.$email.'&token='.$token.' ">http://localhost:888/cms/reset.php?email='.$email.'&token='.$token.'</a>
-            //         </p>';
-            //         if($mail->send()){
-            //             $emailSent = true;
-            //         } else {
-            //             echo "NOT SENT";
-            //         }
+                    $mail = new PHPMailer();
+                    $mail->isSMTP();
+                    $mail->Host = Config::SMTP_HOST;
+                    $mail->Username = Config::SMTP_USER;
+                    $mail->Password = Config::SMTP_PASSWORD;
+                    $mail->Port = Config::SMTP_PORT;
+                    $mail->SMTPSecure = 'tls';
+                    $mail->SMTPAuth = true;
+                    $mail->isHTML(true);
+                    $mail->CharSet = 'UTF-8';
+                    $mail->setFrom('edwin@codingfaculty.com', 'Edwin Diaz');
+                    $mail->addAddress($email);
+                    $mail->Subject = 'This is a test email';
+                    $mail->Body = '<p>Please click to reset your password
+                    <a href="http://localhost:8888/cms/reset.php?email='.$email.'&token='.$token.' ">http://localhost:888/cms/reset.php?email='.$email.'&token='.$token.'</a>
+                    </p>';
+                    if($mail->send()){
+                        $emailSent = true;
+                    } else {
+                        echo "NOT SENT";
+                    }
                 }
             }
         }
